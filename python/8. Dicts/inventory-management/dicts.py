@@ -62,9 +62,12 @@ def remove_item(inventory, item):
     :param item: str - item to remove from the inventory.
     :return: dict - updated inventory with item removed. Current inventory if item does not match.
     """
+    if item in inventory.keys():
+        inventory.pop(item)
+    
+    return inventory
 
-    pass
-
+# print(remove_item({"coal":2, "wood":1, "diamond":2}, "gold"))
 
 def list_inventory(inventory):
     """Create a list containing only available (item_name, item_count > 0) pairs in inventory.
@@ -72,6 +75,11 @@ def list_inventory(inventory):
     :param inventory: dict - an inventory dictionary.
     :return: list of tuples - list of key, value pairs from the inventory dictionary.
     """
+    inventory_list = list()
+    for key, value in inventory.items():
+        if value > 0:
+            inventory_list.append((key,value))
+    return inventory_list
 
-    pass
+print(list_inventory({"coal":7, "wood":11, "diamond":2, "iron":7, "silver":0}))
 
