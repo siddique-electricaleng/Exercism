@@ -7,9 +7,14 @@ def create_inventory(items):
     :param items: list - list of items to create an inventory from.
     :return: dict - the inventory dictionary.
     """
+    inventory_dict = dict()
+    
+    for item in items:
+        if item not in inventory_dict.keys():
+            inventory_dict[item] = items.count(item)
+    return inventory_dict
 
-    pass
-
+# print(create_inventory(["coal", "wood", "wood", "diamond", "diamond", "diamond"]))
 
 def add_items(inventory, items):
     """Add or increment items in inventory using elements from the items `list`.
@@ -18,9 +23,20 @@ def add_items(inventory, items):
     :param items: list - list of items to update the inventory with.
     :return: dict - the inventory updated with the new items.
     """
+    # inventory argument is the return from create_inventory function
+    # modify it and return it
 
-    pass
+    for item in items:
+        if item in inventory.keys():
+            inventory[item] += 1
+        elif item not in inventory.keys():
+            inventory[item] = 1
+        else:
+            print(f"Invalid key: {item}")
+    return inventory
 
+# Test:
+# print(add_items({"coal":1}, ["wood", "iron", "coal", "wood"]))
 
 def decrement_items(inventory, items):
     """Decrement items in inventory using elements from the `items` list.
@@ -29,9 +45,15 @@ def decrement_items(inventory, items):
     :param items: list - list of items to decrement from the inventory.
     :return: dict - updated inventory with items decremented.
     """
+    for item in items:
+        if item in inventory.keys() and inventory[item] > 0:            
+            inventory[item] -= 1
+        else:
+            continue
+    return inventory
 
-    pass
-
+# Test
+# print(decrement_items({"coal":3, "diamond":1, "iron":5}, ["diamond", "coal", "iron", "iron"]))
 
 def remove_item(inventory, item):
     """Remove item from inventory if it matches `item` string.
