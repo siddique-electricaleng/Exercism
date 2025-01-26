@@ -1,6 +1,5 @@
 """Functions to automate Conda airlines ticketing system."""
-
-
+import math
 def generate_seat_letters(number):
     """Generate a series of letters for airline seats.
 
@@ -13,10 +12,10 @@ def generate_seat_letters(number):
     Example: A, B, C, D
 
     """
-
-    pass
-
-
+    seats = ["A", "B", "C", "D"]
+    for num in range(number):
+        yield seats[num % 4]
+        
 def generate_seats(number):
     """Generate a series of identifiers for airline seats.
 
@@ -33,8 +32,22 @@ def generate_seats(number):
     Example: 3C, 3D, 4A, 4B
 
     """
+    seat_letters = ["A", "B", "C", "D"]
+    row = 1
+    seats_generated = 0
 
-    pass
+    while seats_generated < number:
+        if (row == 13):
+            row += 1
+            continue
+
+        for seat in seat_letters:
+            yield f"{row}{seat}"
+            seats_generated += 1
+            if (seats_generated == number):
+                return
+        
+        row += 1
 
 def assign_seats(passengers):
     """Assign seats to passengers.
@@ -46,7 +59,14 @@ def assign_seats(passengers):
 
     """
 
-    pass
+    # Initiated generator object, using above function generate_seats() which generates the seat labels based on how many rows there are
+    pass_seat = generate_seats(len(passengers))
+    seating_plan = dict()
+
+    # Looping through passenger names and getting them their designated seats with labels
+    for person in passengers:
+        seating_plan.update({person:next(pass_seat)})
+    return seating_plan
 
 def generate_codes(seat_numbers, flight_id):
     """Generate codes for a ticket.
@@ -56,5 +76,14 @@ def generate_codes(seat_numbers, flight_id):
     :return: generator - generator that yields 12 character long ticket codes.
 
     """
-
-    pass
+    for seat in seat_numbers:
+        rem_char = 12 - len(seat) - len(flight_id)
+        if (rem_char > 0):
+            ticket_suffix = "0"*rem_char
+            res_string = f"{seat}{flight_id}{ticket_suffix}"
+            yield res_string[:12]
+        else:
+            ticket_suffix = ""
+            res_string = f"{seat}{flight_id}"
+            yield res_string[:12]
+        
