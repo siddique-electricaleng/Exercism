@@ -36,7 +36,7 @@ else:
 # else in a loop
 """ 
 numbers = [1, 45, 32, 12, 60]
-for number in numbers:
+for number in nSumbers:
     if number % 8 == 0:
         print("The numbers are unacceptable")
         break
