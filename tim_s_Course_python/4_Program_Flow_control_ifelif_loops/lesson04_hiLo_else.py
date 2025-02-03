@@ -3,15 +3,14 @@ HiLo - using binary search
 """
 
 low = 1
-high = 10
+high = 1000
 print("Please guess a number between 1 and 1000")
 input("Press Enter to Start")
 guesses = 1
-num_guesses = 0
-while True:
+num_guesses = 1
+while (low != high):
     # Guesses is basically the midpoint between two integer numbers
     guesses = low + (high-low) // 2
-    num_guesses += 1
     print("#{}".format(num_guesses), end=" ")
     print("{0} - {1}".format(low, high))
     high_low = input("My guess is {}. Should I guess higher(H) or lower(L) or am I correct(C)?"
@@ -29,7 +28,10 @@ while True:
         break
     else:
         print("Please enter H, L or C")
-
+    num_guesses += 1
+else:
+    print("Low == High reached.")
+    print("I got it in {} guesses. It is {}".format(num_guesses, guesses))
 
 # else in a loop
 """ 
