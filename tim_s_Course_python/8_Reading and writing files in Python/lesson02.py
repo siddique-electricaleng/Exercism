@@ -4,7 +4,7 @@
 15) Writing data to a text file - tbc
 16) File modes
 18) Unicode in Python
-19) File encodigns
+19) File encodings
 """
 
 # 13 - dictionary with multiple keys - marked where we can
@@ -55,6 +55,45 @@ else:
  """
 
 # 14) Printing data to a text file
+""" 
+# Data to be stored
+data = [
+    "Andromeda - Shrub",
+    "Bellflower - Flower",
+    "China Pink - Flower",
+    "Daffodil - Flower",
+    "Evening Primrose - Flower",
+    "French Marigold - Flower",
+    "Hydrangea - Shrub",
+    "Iris - Flower",
+    "Japanese Camellia - Shrub",
+    "Lavender - Shrub",
+    "Lilac - Shrub",
+    "Magnolia - Shrub",
+    "Peony - Shrub",
+    "Queen Anne's Lace - Flower",
+    "Red Hot Poker - Flower",
+    "Snapdragon - Flower",
+    "Sunflower - Flower",
+    "Tiger Lily - Flower",
+    "Witch Hazel - Shrub",
+]
+#  Storing inside the file
+plants_filename = "flowers_print.txt"
+
+with open(plants_filename, 'w') as plants:
+    for plant in data:
+        print(plant, file=plants)
+
+#  Reading the stored data from the file
+new_list = []
+with open(plants_filename) as plants:
+    for plant in plants:
+        new_list.append(plant.rstrip())
+print(new_list)
+ """
+# 15) Writing data to a text file - another way to store data to the text file
+# Data to be stored
 
 data = [
     "Andromeda - Shrub",
@@ -77,15 +116,23 @@ data = [
     "Tiger Lily - Flower",
     "Witch Hazel - Shrub",
 ]
-
-plants_filename = "flowers_print.txt"
+#  Storing inside the file
+plants_filename = "flowers_write.txt"
 
 with open(plants_filename, 'w') as plants:
     for plant in data:
-        print(plant, file=plants)
+        plants.write(plant)
 
-new_list = []
-with open(plants_filename) as plants:
-    for plant in plants:
-        new_list.append(plant.rstrip())
-print(new_list)
+# Understanding the __str__ method in python:
+# print(data)
+# string_representation = data.__str__()
+# print(string_representation)
+
+# storing integer using .write():
+file_name_int = 'store_integers.txt'
+with open(file_name_int, 'w') as integers:
+    for i in range(10):
+        integers.write(i.__str__())
+
+
+# 18) Unicode in Python
