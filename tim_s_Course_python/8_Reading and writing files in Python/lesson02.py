@@ -94,7 +94,7 @@ print(new_list)
  """
 # 15) Writing data to a text file - another way to store data to the text file
 # Data to be stored
-
+""" 
 data = [
     "Andromeda - Shrub",
     "Bellflower - Flower",
@@ -122,17 +122,22 @@ plants_filename = "flowers_write.txt"
 with open(plants_filename, 'w') as plants:
     for plant in data:
         plants.write(plant)
-
+ """
 # Understanding the __str__ method in python:
 # print(data)
 # string_representation = data.__str__()
 # print(string_representation)
 
 # storing integer using .write():
+""" 
 file_name_int = 'store_integers.txt'
 with open(file_name_int, 'w') as integers:
     for i in range(10):
         integers.write(i.__str__())
 
-
+ """
 # 18) Unicode in Python
+
+with open("Jabberwocky.txt", encoding='utf-8') as jabber:
+    for line in jabber:
+        print(line.rstrip())
