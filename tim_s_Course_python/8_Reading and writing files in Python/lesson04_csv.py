@@ -10,3 +10,10 @@
 """
 
 # 24) Reading in a CSV file
+import csv
+
+csv_filename = 'OlympicMedals_2020.csv'
+
+# Continue from here 2 mins in the video
+with open():
+    pass
