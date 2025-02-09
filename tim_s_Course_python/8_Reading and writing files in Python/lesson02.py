@@ -8,9 +8,10 @@
 """
 
 # 13 - dictionary with multiple keys - marked where we can
+""" 
 file_name = "country_info.txt"
 countries = dict()
-""" 
+
 with open(file_name) as country_file:
     # Just read the first line to throw it away
     # we can also use next(country_file) <- to run the first iteration and skip over to the next
@@ -137,7 +138,8 @@ with open(file_name_int, 'w') as integers:
 
  """
 # 18) Unicode in Python
-
+""" 
 with open("Jabberwocky.txt", encoding='utf-8') as jabber:
     for line in jabber:
         print(line.rstrip())
+"""

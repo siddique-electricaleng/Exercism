@@ -28,7 +28,7 @@ with open('test.json', 'r', encoding='utf-8') as testfile:
 print(data)
 print(data[2])
 """
-# 21) Practical application parsing JSON data
+# 22) Practical application parsing JSON data
 """ 
 json_data_source = 'temperature_anomaly.json'
 with open(json_data_source, 'r', encoding='utf-8') as json_temp_data:
@@ -38,7 +38,7 @@ for year, value in anomalies['data'].items():
     year, value = int(year), float(value)
     print(f"{year}...{value:6.2f}")
 """
-# 22) Practical application parsing JSON data from the internet
+# 23) Practical application parsing JSON data from the internet
 url_data_source_json = 'https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series/globe/tavg/land_ocean/1/12/1850-2024/data.json'
 
 # download json data from the internet
