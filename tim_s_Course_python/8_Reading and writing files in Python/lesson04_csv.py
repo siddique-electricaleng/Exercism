@@ -29,12 +29,24 @@ with open(cereals_filename, encoding='utf-8', newline='') as csv_file:
     reader = csv.reader(csv_file, quoting=csv.QUOTE_NONNUMERIC)
     for row in reader:
         print(row)
- """
+"""
 
 # 26) Sniffer and Dialect
 input_filename = 'country_info.txt'
 
-with open(input_filename, encoding='utf-8', newline='') as csv_file:
-    country_reader = csv.reader(csv_file, delimiter='|')
+with open(input_filename, encoding='utf-8', newline='') as countries_data:
+
+    # Reading 3 lines for a sample:
+    samples = ""
+    for i in range(3):
+        samples += countries_data.readline()
+    country_dialect = csv.Sniffer().sniff(samples)
+
+    # Move file pointer to beginning of file using seek() method
+    countries_data.seek(0)
+    country_reader = csv.reader(countries_data, dialect=country_dialect)
     for row in country_reader:
         print(row)
+print('*'*80)
+
+# 27) CSV Dialect
