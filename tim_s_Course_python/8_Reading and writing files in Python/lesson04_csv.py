@@ -97,3 +97,28 @@ with open(output_filename, 'w', encoding='utf-8', newline='') as output_file:
     writer.writerows(cereals)
 """
 # 29) The csv DictReader
+""" 
+cereals_filename = 'cereal_grains.csv'
+
+with open(cereals_filename, encoding='utf-8', newline='') as cereals_file:
+    reader = csv.DictReader(cereals_file, quoting=csv.QUOTE_NONNUMERIC)
+    for row in reader:
+        print(row)
+"""
+# 30) Solution to the csv DictReader Challenge
+""" 
+country_filename = 'country_info.txt'
+
+countries = {}
+with open(country_filename, encoding='utf-8', newline='') as countries_file:
+    reader = csv.DictReader(countries_file, delimiter='|')
+
+    for row in reader:
+        countries[row['Country'].casefold()] = row
+        countries[row['CC'].casefold()] = row
+
+user_test = input(
+    "Enter the Country or 2 letter coutnry code to see it's capital: ").casefold()
+print(
+    f"The capital of {countries[user_test]['Country']} is {countries[user_test]['Capital']}\r")
+"""
