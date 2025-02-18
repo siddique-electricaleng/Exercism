@@ -5,6 +5,8 @@ attributes &
 methods
 from a parent class
 
+Inheritance is 'is-a' relationship
+
 class Child (Parent)
 Child/Subclass inherit from Parent/SuperClass
 """
