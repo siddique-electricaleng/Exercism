@@ -6,6 +6,7 @@
 """
 import json
 import urllib.request
+import sys
 # 20) Serializing data using JSON
 """ 
 languages = [
@@ -21,9 +22,12 @@ languages = [
 # Writing the data
 with open('test.json', 'w', encoding='utf-8') as testfile:
     json.dump(languages, testfile)
-
+ """
 # Reading the data back from the test.json file
-with open('test.json', 'r', encoding='utf-8') as testfile:
+""" 
+dir_path = "." +sys.path[0].removeprefix(r'c:\Users\Abdul-Hamid\Exercism')
+file_path = dir_path + (r"\test.json")
+with open(file_path, 'r', encoding='utf-8') as testfile:
     data = json.load(testfile)
 print(data)
 print(data[2])
@@ -39,6 +43,7 @@ for year, value in anomalies['data'].items():
     print(f"{year}...{value:6.2f}")
 """
 # 23) Practical application parsing JSON data from the internet
+""" 
 url_data_source_json = 'https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/global/time-series/globe/tavg/land_ocean/1/12/1850-2024/data.json'
 
 # download json data from the internet
@@ -52,3 +57,4 @@ print(type(anomalies))
 
 for year in anomalies['data']:
     print(f"{year}...{anomalies['data'][str(year)]['anomaly']}")
+ """

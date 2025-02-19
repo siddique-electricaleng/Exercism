@@ -1,7 +1,7 @@
 """
-13) Dictionary values with multiple keys - done
-14) Printing data to a text file - done
-15) Writing data to a text file - tbc
+13) Dictionary values with multiple keys
+14) Printing data to a text file
+15) Writing data to a text file
 16) File modes
 18) Unicode in Python
 19) File encodings
