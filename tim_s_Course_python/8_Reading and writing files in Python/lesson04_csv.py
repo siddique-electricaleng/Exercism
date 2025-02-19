@@ -21,7 +21,7 @@ with open(csv_filename, encoding='utf-8', newline='') as csv_file:
     reader = csv.reader(csv_file)
     for row in reader:
         print(row)
-"""
+ """
 # 25) Quoting in a CSV file (using cereals_grains.csv)
 """ 
 cereals_filename = 'cereal_grains.csv'
@@ -29,7 +29,7 @@ with open(cereals_filename, encoding='utf-8', newline='') as csv_file:
     reader = csv.reader(csv_file, quoting=csv.QUOTE_NONNUMERIC)
     for row in reader:
         print(row)
-"""
+ """
 
 # 26) Sniffer and Dialect
 """ 
@@ -49,7 +49,7 @@ with open(input_filename, encoding='utf-8', newline='') as countries_data:
     country_reader = csv.reader(countries_data, dialect=country_dialect)
     for row in country_reader:
         print(row)
-"""
+ """
 # 27) CSV Dialect - seeing what is inside the Dialect Object
 # Using the previous code
 """ 
