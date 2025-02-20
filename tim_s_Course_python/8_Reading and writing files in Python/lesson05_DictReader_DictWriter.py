@@ -5,6 +5,10 @@
 33. The zip function
 34. Reading and writing to the same text file
 35. Solution to parsing functions challenge
+36. The recordinvoice function
+37. Using the recordinvoice function
+38. seek & tell
+39. Improving the recordinvoice function
 """
 import csv
 import sys
@@ -104,7 +108,7 @@ with open(file_path, 'w', encoding='utf-8', newline='') as output_album_file:
         albums_dict = dict(zip_object)
         # Since we are inside the loop. We must write each row individually to the csv and not altogether
         writer.writerow(albums_dict)
- """
+"""
 # 34. Reading and writing to the same text file  & parsing 
 # Code already provided semi-completed.
 # We did the code for parse_invoice_number & next_invoice_number functions
@@ -148,7 +152,8 @@ def next_invoice_number(invoice_number: str) -> str:
         numerical part will be set to "0001".
     """
     year, prev_inv_num = parse_invoice_number(invoice_number)
-    return f"{get_year()}-{str(1 if (year!= get_year()) else (prev_inv_num + 1)).rjust(4,'0')}"
+    # return f"{get_year()}-{str(1 if (year!= get_year()) else (prev_inv_num + 1)).rjust(4,'0')}"
+    return f"{get_year()}-{1 if (year!= get_year()) else (prev_inv_num + 1):04d}"
 
 def record_invoice(invoice_file: TextIO,
                    company: str,
@@ -160,6 +165,15 @@ def record_invoice(invoice_file: TextIO,
     :param company: The name of the company being invoiced.
     :param amount: The amount of the invoice.
     """
+    # read last line only
+    last_row = ''
+    for line in invoice_file:
+        print(line) #TODO4: Delete after testing
+        last_row = line
+    if last_row:
+        invoice_num, _, _ = last_row.split('\t')
+        # TODO5: Need to finish this video as well as using the recordinvoice function
+        
 
 
 # Test code:
