@@ -1,7 +1,7 @@
 """
 30. Field names with DictReader and DictWriter
 31. Reading and writing multiple files
-32. The csv DictWriter
+32. The csv DictWriter (coded inside medals_dict.py)
 33. The zip function
 34. Reading and writing to the same text file
 35. Solution to parsing functions challenge
@@ -72,5 +72,16 @@ with open((dir_path+'\OlympicMedals_2020.csv'), encoding='utf-8', newline='') as
     # All the data rows have been written, print the terminating ]
     print(']', file=output_file)
     print(file=output_file)  # and finish with a blank line.
- """
-# 32. csv DictWriter
+"""
+
+# 33. The zip function
+# This is a list of tuples for song albums
+albums = [
+    ("Welcome to my Nightmare", "Alice Cooper", 1975),
+    ("Bad Company", "Bad Company", 1974),
+    ("Nightflight", "Budgie", 1981),
+    ("More Mayhem", "Imelda May", 2011),
+    ("Ride the Lightning", "Metallica", 1984),
+]
+# We want to use DictWriter to write this info into a csv file
+keys = ['album', 'artist', 'year']

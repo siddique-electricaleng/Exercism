@@ -1,10 +1,13 @@
+import sys
 import csv
 
 medals_table = [
-    {'country': 'United States', 'gold': 39, 'silver': 41, 'bronze': 33, 'rank': 1},
+    {'country': 'United States', 'gold': 39,
+        'silver': 41, 'bronze': 33, 'rank': 1},
     {'country': 'China', 'gold': 38, 'silver': 32, 'bronze': 18, 'rank': 2},
     {'country': 'Japan', 'gold': 27, 'silver': 14, 'bronze': 17, 'rank': 3},
-    {'country': 'Great Britain', 'gold': 22, 'silver': 21, 'bronze': 22, 'rank': 4},
+    {'country': 'Great Britain', 'gold': 22,
+        'silver': 21, 'bronze': 22, 'rank': 4},
     {'country': 'ROC', 'gold': 20, 'silver': 28, 'bronze': 23, 'rank': 5},
     {'country': 'Australia', 'gold': 17, 'silver': 7, 'bronze': 22, 'rank': 6},
     {'country': 'Netherlands', 'gold': 10, 'silver': 12, 'bronze': 14, 'rank': 7},
@@ -68,7 +71,8 @@ medals_table = [
     {'country': 'Puerto Rico', 'gold': 1, 'silver': 0, 'bronze': 0, 'rank': 63},
     {'country': 'Colombia', 'gold': 0, 'silver': 4, 'bronze': 1, 'rank': 66},
     {'country': 'Azerbaijan', 'gold': 0, 'silver': 3, 'bronze': 4, 'rank': 67},
-    {'country': 'Dominican Republic', 'gold': 0, 'silver': 3, 'bronze': 2, 'rank': 68},
+    {'country': 'Dominican Republic', 'gold': 0,
+        'silver': 3, 'bronze': 2, 'rank': 68},
     {'country': 'Armenia', 'gold': 0, 'silver': 2, 'bronze': 2, 'rank': 69},
     {'country': 'Kyrgyzstan', 'gold': 0, 'silver': 2, 'bronze': 1, 'rank': 70},
     {'country': 'Mongolia', 'gold': 0, 'silver': 1, 'bronze': 3, 'rank': 71},
@@ -80,7 +84,8 @@ medals_table = [
     {'country': 'Bahrain', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
     {'country': 'Saudi Arabia', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
     {'country': 'Lithuania', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
-    {'country': 'North Macedonia', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
+    {'country': 'North Macedonia', 'gold': 0,
+        'silver': 1, 'bronze': 0, 'rank': 77},
     {'country': 'Namibia', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
     {'country': 'Turkmenistan', 'gold': 0, 'silver': 1, 'bronze': 0, 'rank': 77},
     {'country': 'Kazakhstan', 'gold': 0, 'silver': 0, 'bronze': 8, 'rank': 83},
@@ -96,3 +101,47 @@ medals_table = [
     {'country': 'Syria', 'gold': 0, 'silver': 0, 'bronze': 1, 'rank': 86},
 ]
 
+# Sorting function - always takes 1 arg as input and returns the key needed to use for sorting
+
+"""
+def sort_key(d: dict) -> str:
+    return d['country']
+
+columns = ['country', 'gold', 'silver', 'bronze', 'rank']
+dir_path = ".\\" + sys.path[0].strip('c:\\Users\\Abdul-Hamid\\Exercism')
+file_path = dir_path + "\\country_medals.csv"
+
+with open(file_path, 'w', encoding='utf-8', newline='') as output_file:
+    writer = csv.DictWriter(output_file, fieldnames=columns)
+    # Writes the columns headings to the csv file
+    writer.writeheader()
+
+    # we can either write in a loop - useful when we're doing operations over data
+
+    # for row in medals_table:
+    #     writer.writerow(row)
+
+    # we can instead write in a single line passing to .writerows() method instead. If no operations are to be done
+    writer.writerows(sorted(medals_table))
+
+"""
+# In here we are going to ignore the 'Rank' when writing to a csv. Also we will sort the csv file:
+# Sorting function - always takes 1 arg as input and returns the key needed to use for sorting
+
+
+def sort_key(d: dict) -> str:
+    return d['country']
+
+
+columns = ['country', 'gold', 'silver', 'bronze']
+dir_path = ".\\" + sys.path[0].strip('c:\\Users\\Abdul-Hamid\\Exercism')
+file_path = dir_path + "\\country_medals.csv"
+
+with open(file_path, 'w', encoding='utf-8', newline='') as output_file:
+    # Using the field extrasaction, we are ignoring the field 'rank'
+    writer = csv.DictWriter(
+        output_file, fieldnames=columns,  extrasaction='ignore')
+    # Writes the columns headings to the csv file
+    writer.writeheader()
+    # Sorting is done below, before writing
+    writer.writerows(sorted(medals_table, key=sort_key))
