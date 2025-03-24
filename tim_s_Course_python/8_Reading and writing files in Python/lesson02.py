@@ -6,13 +6,16 @@
 18) Unicode in Python
 19) File encodings
 """
+import sys
+import os
 
 # 13 - dictionary with multiple keys - marked where we can
 """ 
-file_name = "country_info.txt"
+file_name = 'country_info.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
 countries = dict()
 
-with open(file_name) as country_file:
+with open(dir_path) as country_file:
     # Just read the first line to throw it away
     # we can also use next(country_file) <- to run the first iteration and skip over to the next
     country_file.readline()
@@ -53,7 +56,7 @@ else:
               ['name']} does not have a capital")
     else:
         print(country_capital)
- """
+"""
 
 # 14) Printing data to a text file
 """ 

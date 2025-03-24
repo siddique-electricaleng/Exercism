@@ -9,50 +9,58 @@ Topics covered in lesson 1:
 11. Working with text data
 12. Solution to capital city challenge
 """
-
+import sys
+import os
 # 5. Reading from a text file : Jabberwocky.txt
 
 #  Open file in read mode
-"""
-jabber = open('Jabberwocky.txt', 'r')
+""" 
+file_name = 'Jabberwocky.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
 
-for line in jabber:
+file_obj = open(dir_path, 'r', encoding='utf-8')
+for line in file_obj:
     print(line, end='')
-"""
-# Close the file
-# jabber.close()
 
-# 6. Opening  a file using 'with' block
+# Close the file
+file_obj.close()
 """
-with open('Jabberwocky.txt', 'r') as jaber:
-    for line in jaber:
+# 6. Opening  a file using 'with' block
+""" 
+file_name = 'Jabberwocky.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
+with open(dir_path, 'r', encoding='utf-8') as file_obj:
+    for line in file_obj:
         print(line.rstrip())
 """
 # 7. read, readline and readlines
 
 # readlines()
-"""
-with open('Jabberwocky.txt', 'r') as jabbo:
+""" 
+file_name = 'Jabberwocky.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
+
+with open(dir_path, 'r', encoding='utf-8') as jabbo:
     lines = jabbo.readlines()
 
-# print(lines)
-print(lines[-1:])
 
 for line in reversed(lines):
     print(line.rstrip())
- """
-# read()
 """
-with open("Jabberwocky.txt", 'r') as jabo:
+# read()
+""" 
+file_name = 'Jabberwocky.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
+with open(dir_path, 'r', encoding='utf-8') as jabo:
     text = jabo.read()
 
 print(text)
- """
-
-# 8) strip lstrip and rstrip
 """
-filename = 'Jabberwocky.txt'
-with open(filename) as poem:
+# 8) strip lstrip and rstrip
+""" 
+file_name = 'Jabberwocky.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
+with open(dir_path, encoding='utf-8') as poem:
     first_line = poem.readline().rstrip()
 
 print("Original line:\n", first_line)
@@ -63,7 +71,7 @@ print(processed_text)
 """
 
 # 9 removePrefix() and removeSuffix():
-"""
+""" 
 file_name = "Jabberwocky.txt"
 with open(file_name) as jabber:
     first_line = jabber.readline().rstrip()
@@ -76,10 +84,12 @@ toves_removed = first_line.removesuffix("toves")
 print(toves_removed)
 """
 # 10 Parsing data in a text file & 11) Working with text data
-file_name = "country_info.txt"
-countries = dict()
+""" 
+file_name = 'country_info.txt'
+dir_path = os.path.join(sys.path[0].strip(), file_name);
+countries = dict();
 
-with open(file_name) as country_file:
+with open(dir_path, encoding='utf-8') as country_file:
     # Just read the first line to throw it away
     # we can also use next(country_file) <- to run the first iteration and skip over to the next
     country_file.readline()
@@ -99,9 +109,10 @@ with open(file_name) as country_file:
             'currency': currency
         }
         countries[country.casefold()] = country_dict
-        # print(countries)
-
+print(countries)
+"""
 # 12 - Solution to capital city - my solution was actually quite good imo
+""" 
 input_country = input("Get Capital of the Country:").casefold()
 while input_country not in countries.keys():
     if input_country == "quit":
@@ -113,3 +124,4 @@ while input_country not in countries.keys():
 
 else:
     print(countries[input_country]["capital"])
+"""
